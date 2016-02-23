@@ -1,0 +1,6 @@
+= doro
+
+Describe your project here
+
+:include:doro.rdoc
+

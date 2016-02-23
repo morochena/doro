@@ -1,0 +1,115 @@
+#!/usr/bin/env ruby
+require 'gli'
+require 'fileutils'
+require 'csv'
+require 'date'
+require 'ruby-progressbar'
+require 'notifier'
+
+begin # XXX: Remove this begin/rescue before distributing your app
+require 'doro'
+rescue LoadError
+  STDERR.puts "In development, you need to use `bundle exec bin/doro` to run your app"
+  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
+  STDERR.puts "Feel free to remove this message from bin/doro now"
+  exit 64
+end
+
+include GLI::App
+
+doro_file = "#{Dir.home}/.doro"
+
+program_desc 'A minimalist pomodoro application'
+
+version Doro::VERSION
+
+subcommand_option_handling :normal
+arguments :strict
+
+desc 'Describe some switch here'
+switch [:s,:switch]
+
+desc 'Describe some flag here'
+default_value 'the default'
+arg_name 'The name of the argument'
+flag [:f,:flagname]
+
+desc 'Displays completed pomodoros'
+arg_name 'Describe arguments to list here'
+command :list do |c|
+  c.desc 'Describe a switch to list'
+  c.switch :s
+
+  c.desc 'Describe a flag to list'
+  c.default_value 'default'
+  c.flag :f
+  c.action do |global_options,options,args|
+
+    CSV.foreach doro_file do |row|
+      p row
+    end
+
+  end
+end
+
+desc 'Begins a pomodoro timer'
+arg_name 'Describe arguments to start here'
+command :start do |c|
+  c.desc 'Pass a provider argument'
+  c.flag :name, type: String
+
+  c.action do |global_options,options,args|
+    raise "You didn't specify a task" if args.empty?
+    interrupt = false
+    Process.setproctitle("doro")
+    task_name = args.join(' ')
+    timer_seconds = 25 * 60
+    start_time = Time.now
+    seconds = 0
+
+    bar = ProgressBar.create(
+      :title => task_name,
+      :format => '%a %bᗧ%i %p%% %t',
+      :progress_mark  => ' ',
+      :remainder_mark => '･',
+      :total => timer_seconds
+    )
+
+
+
+    Signal.trap("INT") { interrupt = true }
+
+    timer_seconds.times do
+      break if interrupt == true
+      bar.increment
+      seconds += 1
+      sleep 1
+    end
+
+    Notifier.notify(
+      :image   => "logo.png",
+      :title   => task_name,
+      :message => "Your timer is up! Take a break!"
+    )
+
+    minutes = seconds / 60
+
+    CSV.open(doro_file, "ab") do |csv|
+      csv << [task_name, minutes, start_time.to_s]
+    end
+  end
+end
+
+pre do |global,command,options,args|
+  FileUtils::touch doro_file unless File.file? doro_file
+  true
+end
+
+post do |global,command,options,args|
+end
+
+on_error do |exception|
+  true
+end
+
+exit run(ARGV)
