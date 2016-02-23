@@ -19,5 +19,9 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
   s.add_development_dependency('aruba')
+  s.add_dependency('ruby-progressbar')
+  s.add_dependency('notifier')
+  s.add_dependency('terminal-notifier')
+
   s.add_runtime_dependency('gli','2.13.4')
 end

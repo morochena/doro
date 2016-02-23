@@ -26,23 +26,14 @@ version Doro::VERSION
 subcommand_option_handling :normal
 arguments :strict
 
-desc 'Describe some switch here'
-switch [:s,:switch]
-
-desc 'Describe some flag here'
-default_value 'the default'
-arg_name 'The name of the argument'
-flag [:f,:flagname]
-
 desc 'Displays completed pomodoros'
-arg_name 'Describe arguments to list here'
+arg_name '*no arguments*'
 command :list do |c|
-  c.desc 'Describe a switch to list'
-  c.switch :s
 
-  c.desc 'Describe a flag to list'
-  c.default_value 'default'
-  c.flag :f
+  c.desc 'Number of pomodoros to show'
+  c.default_value 10
+  c.flag :n
+
   c.action do |global_options,options,args|
 
     CSV.foreach doro_file do |row|
@@ -53,10 +44,11 @@ command :list do |c|
 end
 
 desc 'Begins a pomodoro timer'
-arg_name 'Describe arguments to start here'
+arg_name '*description of task* (eg. cool task)'
 command :start do |c|
-  c.desc 'Pass a provider argument'
-  c.flag :name, type: String
+
+  c.desc 'Background (Daemon) Mode'
+  c.switch :d
 
   c.action do |global_options,options,args|
     raise "You didn't specify a task" if args.empty?

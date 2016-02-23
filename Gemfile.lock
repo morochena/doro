@@ -3,6 +3,9 @@ PATH
   specs:
     doro (0.0.1)
       gli (= 2.13.4)
+      notifier
+      ruby-progressbar
+      terminal-notifier
 
 GEM
   remote: https://rubygems.org/
@@ -54,12 +57,8 @@ PLATFORMS
 DEPENDENCIES
   aruba
   doro!
-  gli
-  notifier
   rake
   rdoc
-  ruby-progressbar
-  terminal-notifier
 
 BUNDLED WITH
    1.11.2

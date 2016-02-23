@@ -1,0 +1,16 @@
+Tue, 23 Feb 2016 15:59:39 -0500
+./bin/doro	Tue, 23 Feb 2016 15:51:33 -0500
+./bin/logo.jpg	Tue, 23 Feb 2016 15:50:44 -0500
+./doro.gemspec	Tue, 23 Feb 2016 15:53:34 -0500
+./doro.rdoc	Tue, 23 Feb 2016 14:07:32 -0500
+./features/doro.feature	Tue, 23 Feb 2016 14:07:32 -0500
+./features/step_definitions/doro_steps.rb	Tue, 23 Feb 2016 14:07:32 -0500
+./features/support/env.rb	Tue, 23 Feb 2016 14:07:32 -0500
+./Gemfile	Tue, 23 Feb 2016 15:44:56 -0500
+./Gemfile.lock	Tue, 23 Feb 2016 15:45:06 -0500
+./lib/doro/version.rb	Tue, 23 Feb 2016 14:07:32 -0500
+./lib/doro.rb	Tue, 23 Feb 2016 14:07:32 -0500
+./Rakefile	Tue, 23 Feb 2016 14:07:32 -0500
+./README.rdoc	Tue, 23 Feb 2016 15:58:21 -0500
+./test/default_test.rb	Tue, 23 Feb 2016 14:07:32 -0500
+./test/test_helper.rb	Tue, 23 Feb 2016 14:07:32 -0500

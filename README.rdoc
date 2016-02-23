@@ -1,6 +1,12 @@
 = doro
 
-Describe your project here
+A minimalist pomodoro application
+
+Creates a `.doro` file in $HOME.
+
+TODO: daemon switch
+TODO: break 
+TODO: number flag on list
+
 
 :include:doro.rdoc
-
