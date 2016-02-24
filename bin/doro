@@ -39,9 +39,6 @@ desc 'Begins a pomodoro timer'
 arg_name '*description of task* (eg. cool task)'
 command :start do |c|
 
-  c.desc 'Background (Daemon) Mode'
-  c.switch :d
-
   c.desc 'Tag task'
   c.default_value 'untagged'
   c.flag :t, type: String
@@ -91,20 +88,31 @@ end
 desc 'Begins a break timer'
 arg_name '*none*'
 command :break do |c|
+
+  c.desc 'Long (15 min) break'
+  c.switch :long
+
+  c.desc 'Set time in minutes'
+  c.default_value 5
+  c.flag :t, type: Integer
+
   c.action do |global_options,options,args|
     interrupt = false
+
+    minutes = options[:t]
+    options[:long]? minutes = 15 : nil
 
     bar = ProgressBar.create(
       :title => 'Break',
       :format => '%a %bᗧ%i %t',
       :progress_mark  => ' ',
       :remainder_mark => '･',
-      :total => 300
+      :total => minutes * 60
     )
 
     Signal.trap("INT") { interrupt = true }
 
-    300.times do
+    (minutes * 60).times do
       break if interrupt == true
       bar.increment
       sleep 1

@@ -24,9 +24,21 @@ This starts a 5 minute break timer to be used in between pomodoros.
 
 ## Todo
 
-- [ ] background switch
 - [ ] number flag on list
+- [ ] time flag on break
+- [ ] long switch on break
 - [ ] remove dependencies
 - [ ] colorize
 
-:include:doro.rdoc
+### Notifications
+
+Supported notification platforms via [notifier](https://github.com/fnando/notifier) gem:
+
+- Growl (Mac OS X)
+- terminal-notifier (Notification Center wrapper for Mac OS X)
+- GNTP Protocol (Growl, with Vagrant support)
+- Kdialog (Linux/KDE)
+- Knotify (Linux/KDE)
+- OSD Cat (Linux)
+- Libnotify (Linux)
+- Snarl (Windows)
