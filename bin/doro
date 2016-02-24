@@ -5,19 +5,19 @@ require 'csv'
 require 'date'
 require 'ruby-progressbar'
 require 'notifier'
+
 require 'doro'
 
-
+# Initialization
 Process.setproctitle("doro")
 include GLI::App
 doro_file = "#{Dir.home}/.doro"
-
 program_desc 'A minimalist pomodoro application'
 version Doro::VERSION
-
 subcommand_option_handling :normal
 arguments :strict
 
+# Begin CLI
 desc 'Displays completed pomodoros'
 arg_name '*no arguments*'
 command :list do |c|
@@ -28,12 +28,12 @@ command :list do |c|
 
   c.action do |global_options,options,args|
 
-    CSV.foreach doro_file do |row|
-      p row
-    end
+    Doro::Entries::display_entries(doro_file: doro_file, num_entries: options[:n])
 
   end
 end
+
+
 
 desc 'Begins a pomodoro timer'
 arg_name '*description of task* (eg. cool task)'
@@ -76,13 +76,17 @@ command :start do |c|
       :message => "Your timer is up! Take a break!"
     )
 
-    minutes = seconds / 60
-
-    CSV.open(doro_file, "ab") do |csv|
-      csv << [task_name, minutes, start_time.to_s, options[:t]]
-    end
+    Doro::Entries::add_entry(
+      doro_file: doro_file,
+      task_name: task_name,
+      minutes: seconds / 60,
+      start_time: start_time,
+      tag: options[:t]
+    )
   end
 end
+
+
 
 desc 'Begins a break timer'
 arg_name '*none*'
@@ -113,6 +117,8 @@ command :break do |c|
     )
   end
 end
+
+
 
 pre do |global,command,options,args|
   FileUtils::touch doro_file unless File.file? doro_file

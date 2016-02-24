@@ -10,3 +10,7 @@ Feature: My bootstrapped app kinda works
     When I run `doro list`
     Then the output should contain "["
     And the output should contain "]"
+
+  Scenario: App can start a pomodoro
+    When I run `doro start test task`
+    Then the output shold contain 

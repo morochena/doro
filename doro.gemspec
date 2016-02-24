@@ -7,7 +7,7 @@ spec = Gem::Specification.new do |s|
   s.email = 'marcus@orochena.net'
   s.homepage = 'http://www.orochena.net'
   s.platform = Gem::Platform::RUBY
-  s.summary = 'A minimalist pomodoro application'
+  s.summary = 'A minimalist pomodoro cli application'
   s.files = `git ls-files`.split("
 ")
   s.require_paths << 'lib'
@@ -19,6 +19,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
   s.add_development_dependency('aruba')
+
   s.add_dependency('ruby-progressbar')
   s.add_dependency('notifier')
   s.add_dependency('terminal-notifier')
