@@ -3,6 +3,10 @@
 == Description
 A minimalist pomodoro application. It creates a .doro file in your home directory which stores your pomodoro entries in csv format.
 
+== Install
+
+`gem install doro`
+
 == Usage
 
 `doro start [-t tag] description of task`
@@ -11,7 +15,7 @@ This starts a 25 minute pomodoro timer in your terminal. To exit the pomodoro ea
 
 `doro list [-n num]`
 
-This displays a list of your pomodoro entries.
+This displays a list of your pomodoro entries. Defaults to showing your last 10 entries.
 
 `doro break`
 
@@ -19,8 +23,9 @@ This starts a 5 minute break timer to be used in between pomodoros.
 
 == Todo
 
-TODO: daemon switch
-TODO: break
+TODO: background switch
 TODO: number flag on list
+TODO: remove dependencies
+TODO: colorize
 
 :include:doro.rdoc
