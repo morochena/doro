@@ -12,7 +12,7 @@ A minimalist pomodoro application.
 
   `$ doro start [-t tag] description of task`
 
-This starts a 25 minute pomodoro timer in your terminal. To exit the pomodoro early, you can sent an interrupt with Ctrl+C. Whether you let it finish or not, it will save an entry of your pomodoro to +~/.doro+ and notify you.
+This starts a 25 minute pomodoro timer in your terminal. To exit the pomodoro early, you can sent an interrupt with Ctrl+C. Whether you let it finish or not, it will save an entry of your pomodoro to `~/.doro` and notify you.
 
   `$ doro list [-n num]`
 
