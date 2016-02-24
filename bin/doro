@@ -15,12 +15,11 @@ rescue LoadError
   exit 64
 end
 
+Process.setproctitle("doro")
 include GLI::App
-
 doro_file = "#{Dir.home}/.doro"
 
 program_desc 'A minimalist pomodoro application'
-
 version Doro::VERSION
 
 subcommand_option_handling :normal
@@ -50,28 +49,28 @@ command :start do |c|
   c.desc 'Background (Daemon) Mode'
   c.switch :d
 
+  c.desc 'Tag task'
+  c.default_value 'untagged'
+  c.flag :t, type: String
+
   c.action do |global_options,options,args|
     raise "You didn't specify a task" if args.empty?
     interrupt = false
-    Process.setproctitle("doro")
     task_name = args.join(' ')
-    timer_seconds = 25 * 60
     start_time = Time.now
     seconds = 0
 
     bar = ProgressBar.create(
       :title => task_name,
-      :format => '%a %bᗧ%i %p%% %t',
+      :format => '%a %bᗧ%i %t',
       :progress_mark  => ' ',
       :remainder_mark => '･',
-      :total => timer_seconds
+      :total => 1500
     )
-
-
 
     Signal.trap("INT") { interrupt = true }
 
-    timer_seconds.times do
+    1500.times do
       break if interrupt == true
       bar.increment
       seconds += 1
@@ -87,8 +86,38 @@ command :start do |c|
     minutes = seconds / 60
 
     CSV.open(doro_file, "ab") do |csv|
-      csv << [task_name, minutes, start_time.to_s]
+      csv << [task_name, minutes, start_time.to_s, options[:t]]
     end
+  end
+end
+
+desc 'Begins a break timer'
+arg_name '*none*'
+command :break do |c|
+  c.action do |global_options,options,args|
+    interrupt = false
+
+    bar = ProgressBar.create(
+      :title => 'Break',
+      :format => '%a %bᗧ%i %t',
+      :progress_mark  => ' ',
+      :remainder_mark => '･',
+      :total => 300
+    )
+
+    Signal.trap("INT") { interrupt = true }
+
+    300.times do
+      break if interrupt == true
+      bar.increment
+      sleep 1
+    end
+
+    Notifier.notify(
+      :image   => "logo.png",
+      :title   => 'Break',
+      :message => "Break time's over! Back to work!"
+    )
   end
 end
 
