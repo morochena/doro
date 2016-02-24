@@ -22,6 +22,10 @@ This displays a list of your pomodoro entries. Defaults to showing your last 10 
 
 This starts a 5 minute break timer to be used in between pomodoros.
 
+  `$ doro help`
+
+For detailed information.
+
 ## Todo
 
 - [ ] number flag on list
