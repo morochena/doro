@@ -5,24 +5,22 @@ spec = Gem::Specification.new do |s|
   s.version = Doro::VERSION
   s.author = 'Marcus Orochena'
   s.email = 'marcus@orochena.net'
-  s.homepage = 'http://www.orochena.net'
+  s.homepage = 'https://github.com/morochena/doro'
   s.platform = Gem::Platform::RUBY
   s.summary = 'A minimalist pomodoro cli application'
   s.files = `git ls-files`.split("
 ")
   s.require_paths << 'lib'
-  s.has_rdoc = true
-  s.extra_rdoc_files = ['README.rdoc','doro.rdoc']
   s.rdoc_options << '--title' << 'doro' << '--main' << 'README.rdoc' << '-ri'
   s.bindir = 'bin'
   s.executables << 'doro'
-  s.add_development_dependency('rake')
-  s.add_development_dependency('rdoc')
-  s.add_development_dependency('aruba')
+  s.add_development_dependency('rake', '~> 10.5')
+  s.add_development_dependency('rdoc', '~> 4.2')
+  s.add_development_dependency('aruba', '~> 0.13')
 
-  s.add_dependency('ruby-progressbar')
-  s.add_dependency('notifier')
-  s.add_dependency('terminal-notifier')
+  s.add_dependency('ruby-progressbar', '~> 1.7')
+  s.add_dependency('notifier', '~> 0.5')
+  s.add_dependency('terminal-notifier', '~> 1.6')
 
   s.add_runtime_dependency('gli','2.13.4')
 end

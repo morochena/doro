@@ -108,10 +108,10 @@ command :break do |c|
     options[:long]? minutes = 15 : nil
 
     bar = ProgressBar.create(
-      :title => 'Break',
-      :format => '%a %bᗧ%i %t',
-      :progress_mark  => ' ',
-      :remainder_mark => '･',
+      :title => task_name,
+      :format => '%a [%B] %t',
+      :progress_mark  => '=',
+      :remainder_mark => ' ',
       :total => minutes * 60
     )
 
