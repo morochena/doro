@@ -18,7 +18,7 @@ This starts a 25 minute pomodoro timer in your terminal. To exit the pomodoro ea
 
 This displays a list of your pomodoro entries. Defaults to showing your last 10 entries.
 
-  `$ doro break`
+  `$ doro break [-t num] [--long]`
 
 This starts a 5 minute break timer to be used in between pomodoros.
 

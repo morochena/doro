@@ -50,11 +50,12 @@ command :start do |c|
     start_time = Time.now
     seconds = 0
 
+    puts ''
     bar = ProgressBar.create(
       :title => task_name,
-      :format => '%a %bᗧ%i %t',
-      :progress_mark  => ' ',
-      :remainder_mark => '･',
+      :format => '%a [%B] %t',
+      :progress_mark  => '=',
+      :remainder_mark => ' ',
       :total => 1500
     )
 
