@@ -68,6 +68,8 @@ command :start do |c|
       sleep 1
     end
 
+    print("\r")
+
     if interrupt == false
       Notifier.notify(
         :image   => "logo.png",
