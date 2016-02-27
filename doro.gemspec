@@ -20,7 +20,6 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rdoc')
   s.add_development_dependency('aruba')
 
-  s.add_dependency('ruby-progressbar')
   s.add_dependency('notifier')
   s.add_dependency('terminal-notifier')
 
