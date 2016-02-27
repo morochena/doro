@@ -99,13 +99,7 @@ command :break do |c|
     minutes = options[:t]
     options[:long]? minutes = 15 : nil
 
-    bar = ProgressBar.create(
-      :title => 'Break',
-      :format => '%a %bᗧ%i %t',
-      :progress_mark  => ' ',
-      :remainder_mark => '･',
-      :total => minutes * 60
-    )
+    ProgressBar.new('Break', minutes * 60).start
 
     Signal.trap("INT") { interrupt = true }
 

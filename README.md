@@ -29,10 +29,7 @@ For detailed information.
 ## Todo
 
 - [ ] number flag on list
-- [ ] time flag on break
-- [ ] long switch on break
 - [ ] remove dependencies
-- [ ] colorize
 
 ### Notifications
 
