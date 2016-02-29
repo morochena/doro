@@ -3,7 +3,6 @@ require 'gli'
 require 'fileutils'
 require 'csv'
 require 'date'
-require 'ruby-progressbar'
 require 'notifier'
 
 require 'doro'
@@ -50,14 +49,7 @@ command :start do |c|
     start_time = Time.now
     seconds = 0
 
-    puts ''
-    bar = ProgressBar.create(
-      :title => task_name,
-      :format => '%a [%B] %t',
-      :progress_mark  => '=',
-      :remainder_mark => ' ',
-      :total => 1500
-    )
+    ProgressBar.new(task_name, 1500).start
 
     Signal.trap("INT") { interrupt = true }
 
@@ -107,13 +99,7 @@ command :break do |c|
     minutes = options[:t]
     options[:long]? minutes = 15 : nil
 
-    bar = ProgressBar.create(
-      :title => task_name,
-      :format => '%a [%B] %t',
-      :progress_mark  => '=',
-      :remainder_mark => ' ',
-      :total => minutes * 60
-    )
+    ProgressBar.new('Break', minutes * 60).start
 
     Signal.trap("INT") { interrupt = true }
 
