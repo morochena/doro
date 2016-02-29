@@ -1,5 +1,6 @@
 require 'io/console'
 require 'time'
+require 'notifier'
 
 class ProgressBar
   def initialize(title, max_progress)
@@ -18,7 +19,10 @@ class ProgressBar
       sleep 1
       @progress += 1
     end
+
     print("\r")
+
+    display_notification
   end
 
   private
@@ -34,7 +38,6 @@ class ProgressBar
   end
 
   # Methods for determing time
-
   def display_time
     Time.at((Time.now - @start_time)).utc.strftime("%M:%S")
   end
@@ -56,7 +59,6 @@ class ProgressBar
     @title.size + 10
   end
 
-
   # Methods for determining terminal length
   def terminal_length
     return 80 unless unix?
@@ -76,4 +78,12 @@ class ProgressBar
   def unix?
     RUBY_PLATFORM =~ /(aix|darwin|linux|(net|free|open)bsd|cygwin|solaris|irix|hpux)/i
   end
+
+  # Methods for notifications
+  def display_notification
+    unless @interrupt
+      Notifier.notify(image: "logo.png", title: @title, message: "")
+    end
+  end
+
 end

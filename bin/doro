@@ -3,7 +3,6 @@ require 'gli'
 require 'fileutils'
 require 'csv'
 require 'date'
-require 'notifier'
 
 require 'doro'
 
@@ -32,8 +31,6 @@ command :list do |c|
   end
 end
 
-
-
 desc 'Begins a pomodoro timer'
 arg_name '*description of task* (eg. cool task)'
 command :start do |c|
@@ -44,20 +41,11 @@ command :start do |c|
 
   c.action do |global_options,options,args|
     raise "You didn't specify a task" if args.empty?
-    interrupt = false
     task_name = args.join(' ')
     start_time = Time.now
     seconds = 0
 
     ProgressBar.new(task_name, 1500).start
-
-    if interrupt == false
-      Notifier.notify(
-        :image   => "logo.png",
-        :title   => task_name,
-        :message => "Your timer is up! Take a break!"
-        )
-    end
 
     Doro::Entries::add_entry(
       doro_file: doro_file,
@@ -66,10 +54,9 @@ command :start do |c|
       start_time: start_time,
       tag: options[:t]
     )
+
   end
 end
-
-
 
 desc 'Begins a break timer'
 arg_name '*none*'
@@ -83,25 +70,14 @@ command :break do |c|
   c.flag :t, type: Integer
 
   c.action do |global_options,options,args|
-    interrupt = false
 
     minutes = options[:t]
     options[:long]? minutes = 15 : nil
 
     ProgressBar.new('Break', minutes * 60).start
 
-
-    if interrupt == false
-      Notifier.notify(
-        :image   => "logo.png",
-        :title   => 'Break',
-        :message => "Break time's over! Back to work!"
-      )
-    end
   end
 end
-
-
 
 pre do |global,command,options,args|
   FileUtils::touch doro_file unless File.file? doro_file

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    doro (0.2.0)
+    doro (0.2.1)
       gli (= 2.13.4)
       notifier (~> 0.5)
       terminal-notifier (~> 1.6)
