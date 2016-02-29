@@ -51,17 +51,6 @@ command :start do |c|
 
     ProgressBar.new(task_name, 1500).start
 
-    Signal.trap("INT") { interrupt = true }
-
-    1500.times do
-      break if interrupt == true
-      bar.increment
-      seconds += 1
-      sleep 1
-    end
-
-    print("\r")
-
     if interrupt == false
       Notifier.notify(
         :image   => "logo.png",
@@ -101,13 +90,6 @@ command :break do |c|
 
     ProgressBar.new('Break', minutes * 60).start
 
-    Signal.trap("INT") { interrupt = true }
-
-    (minutes * 60).times do
-      break if interrupt == true
-      bar.increment
-      sleep 1
-    end
 
     if interrupt == false
       Notifier.notify(

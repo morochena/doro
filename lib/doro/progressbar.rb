@@ -7,14 +7,18 @@ class ProgressBar
     @max_progress = max_progress
     @title = title
     @start_time = Time.now
+    @interrupt = false
   end
 
   def start
-    while (@progress <= @max_progress)
+    Signal.trap("INT") { @interrupt = true }
+
+    while (@progress <= @max_progress && @interrupt == false )
       render_progress
       sleep 1
       @progress += 1
     end
+    print("\r")
   end
 
   private

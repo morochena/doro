@@ -29,7 +29,7 @@ For detailed information.
 ## Todo
 
 - [ ] number flag on list
-- [ ] remove dependencies
+- [ ] .dororc
 
 ### Notifications
 
