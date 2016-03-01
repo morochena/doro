@@ -16,8 +16,9 @@ class ProgressBar
 
     while (@progress <= @max_progress && @interrupt == false )
       render_progress
-      sleep 1
       @progress += 1
+      yield
+      sleep 1
     end
 
     print("\r")

@@ -45,7 +45,9 @@ command :start do |c|
     start_time = Time.now
     seconds = 0
 
-    ProgressBar.new(task_name, 1500).start
+    ProgressBar.new(task_name, 1500).start do
+      seconds +=1
+    end
 
     Doro::Entries::add_entry(
       doro_file: doro_file,
