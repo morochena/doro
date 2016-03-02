@@ -62,7 +62,7 @@
   
     <li><a href="../Gemfile_lock.html">Gemfile.lock</a>
   
-    <li><a href="../README_rdoc.html">README</a>
+    <li><a href="../README_md.html">README</a>
   
     <li><a href="../Rakefile.html">Rakefile</a>
   
@@ -71,6 +71,8 @@
     <li><a href="../doro_rdoc.html">doro</a>
   
     <li><a href="../features/doro_feature.html">doro.feature</a>
+  
+    <li><a href="../results_html.html">results.html</a>
   
   </ul>
 </div>
@@ -82,13 +84,21 @@
 
 <p>Feature: My bootstrapped app kinda works</p>
 
-<pre>In order to get going on coding my awesome app
-I want to have aruba and cucumber setup
-So I don&#39;t have to do it myself
+<pre>In order to keep track of my time
+I want use a command line tool to manage my pomodoros
 
 Scenario: App just runs
-  When I get help for &quot;doro&quot;
-  Then the exit status should be 0</pre>
+  When I run `doro help`
+  Then the exit status should be 0
+
+Scenario: App lists todos
+  When I run `doro list`
+  Then the output should contain &quot;[&quot;
+  And the output should contain &quot;]&quot;
+
+Scenario: App can start a pomodoro
+  When I run `doro start test task`
+  Then the output shold contain</pre>
 </main>
 
 

@@ -1,5 +1,67 @@
-= doro
+== doro - A minimalist pomodoro application
 
-Generate this with
-    doro rdoc
-After you have described your command line interface
+v0.2.3
+
+=== Global Options
+=== --help
+Show this message
+
+
+
+=== --version
+Display the program version
+
+
+
+=== Commands
+==== Command: <tt>break  *none*</tt>
+Begins a break timer
+
+
+===== Options
+===== -t arg
+
+Set time in minutes
+
+[Default Value] 5
+
+
+===== --[no-]long
+Long (15 min) break
+
+
+
+==== Command: <tt>help  command</tt>
+Shows a list of commands or help for one command
+
+Gets help for the application or its commands. Can also list the commands in a way helpful to creating a bash-style completion function
+===== Options
+===== -c
+List commands one per line, to assist with shell completion
+
+
+
+==== Command: <tt>list  *no arguments*</tt>
+Displays completed pomodoros
+
+
+===== Options
+===== -n arg
+
+Number of pomodoros to show
+
+[Default Value] 10
+
+
+==== Command: <tt>start  *description of task* (eg. cool task)</tt>
+Begins a pomodoro timer
+
+
+===== Options
+===== -t arg
+
+Tag task
+
+[Default Value] untagged
+
+

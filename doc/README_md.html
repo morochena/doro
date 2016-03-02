@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>doro - RDoc Documentation</title>
+<title>README - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -51,6 +51,19 @@
   </div>
 
   
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-doro">doro</a>
+    <li><a href="#label-Description">Description</a>
+    <li><a href="#label-Install">Install</a>
+    <li><a href="#label-Usage">Usage</a>
+    <li><a href="#label-Todo">Todo</a>
+    <li><a href="#label-Notifications">Notifications</a>
+  </ul>
+</div>
+
 
   <div id="project-metadata">
     <div id="fileindex-section" class="nav-section">
@@ -80,16 +93,68 @@
   </div>
 </nav>
 
-<main role="main" aria-label="Page doro.rdoc">
+<main role="main" aria-label="Page README.md">
 
 <h1 id="label-doro">doro<span><a href="#label-doro">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>Generate this with</p>
+<h2 id="label-Description">Description<span><a href="#label-Description">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<pre class="ruby"><span class="ruby-identifier">doro</span> <span class="ruby-identifier">rdoc</span>
-</pre>
+<p>A minimalist pomodoro application.</p>
 
-<p>After you have described your command line interface</p>
+<h2 id="label-Install">Install<span><a href="#label-Install">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><code>$ gem install doro</code></p>
+
+<h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><code>$ doro start [-t tag] description of task</code></p>
+
+<p>This starts a 25 minute pomodoro timer in your terminal. To exit the
+pomodoro early, you can sent an interrupt with Ctrl+C. Whether you let it
+finish or not, it will save an entry of your pomodoro to
+<code>~/.doro</code> and notify you.</p>
+
+<p><code>$ doro list [-n num]</code></p>
+
+<p>This displays a list of your pomodoro entries. Defaults to showing your
+last 10 entries.</p>
+
+<p><code>$ doro break [-t num] [--long]</code></p>
+
+<p>This starts a 5 minute break timer to be used in between pomodoros.</p>
+
+<p><code>$ doro help</code></p>
+
+<p>For detailed information.</p>
+
+<h2 id="label-Todo">Todo<span><a href="#label-Todo">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<ul><li>
+<p>[ ] .dororc</p>
+</li><li>
+<p>[ ] tests</p>
+</li></ul>
+
+<h3 id="label-Notifications">Notifications<span><a href="#label-Notifications">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Supported notification platforms via <a
+href="https://github.com/fnando/notifier">notifier</a> gem:</p>
+<ul><li>
+<p>Growl (Mac OS X)</p>
+</li><li>
+<p>terminal-notifier (Notification Center wrapper for Mac OS X)</p>
+</li><li>
+<p>GNTP Protocol (Growl, with Vagrant support)</p>
+</li><li>
+<p>Kdialog (Linux/KDE)</p>
+</li><li>
+<p>Knotify (Linux/KDE)</p>
+</li><li>
+<p>OSD Cat (Linux)</p>
+</li><li>
+<p>Libnotify (Linux)</p>
+</li><li>
+<p>Snarl (Windows)</p>
+</li></ul>
 </main>
 
 

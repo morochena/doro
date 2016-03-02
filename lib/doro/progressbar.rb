@@ -2,7 +2,14 @@ require 'io/console'
 require 'time'
 require 'notifier'
 
+##
+# This class handles the incrementing and display of the progress bar.
+
 class ProgressBar
+
+  ##
+  # Title can be any string, max_progress is in seconds.
+
   def initialize(title, max_progress)
     @progress = 0
     @max_progress = max_progress
@@ -10,6 +17,14 @@ class ProgressBar
     @start_time = Time.now
     @interrupt = false
   end
+
+  ##
+  # This starts the timer. It accepts a block which allows you plug in other
+  # behaviors (such as incrementing another timer outside of the class).
+  # You'd do something like:
+  #   ProgressBar.new("Example", 60).start do |t|
+  #     p 'this fires every second'
+  #   end
 
   def start
     Signal.trap("INT") { @interrupt = true }

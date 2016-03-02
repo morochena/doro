@@ -29,6 +29,7 @@ For detailed information.
 ## Todo
 
 - [ ] .dororc
+- [ ] tests
 
 ### Notifications
 

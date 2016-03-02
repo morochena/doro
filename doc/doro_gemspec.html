@@ -62,7 +62,7 @@
   
     <li><a href="./Gemfile_lock.html">Gemfile.lock</a>
   
-    <li><a href="./README_rdoc.html">README</a>
+    <li><a href="./README_md.html">README</a>
   
     <li><a href="./Rakefile.html">Rakefile</a>
   
@@ -71,6 +71,8 @@
     <li><a href="./doro_rdoc.html">doro</a>
   
     <li><a href="./features/doro_feature.html">doro.feature</a>
+  
+    <li><a href="./results_html.html">results.html</a>
   
   </ul>
 </div>
@@ -89,22 +91,24 @@ spec = Gem::Specification.new do |s|</p>
 s.version = Doro::VERSION
 s.author = &#39;Marcus Orochena&#39;
 s.email = &#39;marcus@orochena.net&#39;
-s.homepage = &#39;http://www.orochena.net&#39;
+s.homepage = &#39;https://github.com/morochena/doro&#39;
 s.platform = Gem::Platform::RUBY
-s.summary = &#39;A minimalist pomodoro application&#39;
+s.summary = &#39;A minimalist pomodoro cli application&#39;
 s.files = `git ls-files`.split(&quot;</pre>
 
 <p>“)</p>
 
 <pre class="ruby"><span class="ruby-identifier">s</span>.<span class="ruby-identifier">require_paths</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;lib&#39;</span>
-<span class="ruby-identifier">s</span>.<span class="ruby-identifier">has_rdoc</span> = <span class="ruby-keyword">true</span>
-<span class="ruby-identifier">s</span>.<span class="ruby-identifier">extra_rdoc_files</span> = [<span class="ruby-string">&#39;README.rdoc&#39;</span>,<span class="ruby-string">&#39;doro.rdoc&#39;</span>]
 <span class="ruby-identifier">s</span>.<span class="ruby-identifier">rdoc_options</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;--title&#39;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;doro&#39;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;--main&#39;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;README.rdoc&#39;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;-ri&#39;</span>
 <span class="ruby-identifier">s</span>.<span class="ruby-identifier">bindir</span> = <span class="ruby-string">&#39;bin&#39;</span>
 <span class="ruby-identifier">s</span>.<span class="ruby-identifier">executables</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;doro&#39;</span>
-<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_development_dependency</span>(<span class="ruby-string">&#39;rake&#39;</span>)
-<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_development_dependency</span>(<span class="ruby-string">&#39;rdoc&#39;</span>)
-<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_development_dependency</span>(<span class="ruby-string">&#39;aruba&#39;</span>)
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_development_dependency</span>(<span class="ruby-string">&#39;rake&#39;</span>, <span class="ruby-string">&#39;~&gt; 10.5&#39;</span>)
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_development_dependency</span>(<span class="ruby-string">&#39;rdoc&#39;</span>, <span class="ruby-string">&#39;~&gt; 4.2&#39;</span>)
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_development_dependency</span>(<span class="ruby-string">&#39;aruba&#39;</span>, <span class="ruby-string">&#39;~&gt; 0.13&#39;</span>)
+
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_dependency</span>(<span class="ruby-string">&#39;notifier&#39;</span>, <span class="ruby-string">&#39;~&gt; 0.5&#39;</span>)
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_dependency</span>(<span class="ruby-string">&#39;terminal-notifier&#39;</span>, <span class="ruby-string">&#39;~&gt; 1.6&#39;</span>)
+
 <span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_runtime_dependency</span>(<span class="ruby-string">&#39;gli&#39;</span>,<span class="ruby-string">&#39;2.13.4&#39;</span>)
 </pre>
 
