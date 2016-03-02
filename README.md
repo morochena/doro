@@ -28,7 +28,6 @@ For detailed information.
 
 ## Todo
 
-- [ ] number flag on list
 - [ ] .dororc
 
 ### Notifications
