@@ -1,10 +1,23 @@
+require 'pp'
+
 module Doro
   module Entries
 
     def self.display_entries(doro_file: "#{Dir.home}/.doro", num_entries: 10)
+      rows = []
+      start_index = num_entries
+
       CSV.foreach doro_file do |row|
-        p row
+        rows << row
       end
+
+      if rows.size < num_entries
+        start_index = rows.size
+      end
+
+      start_index *= -1
+
+      pp rows[start_index..-1]
     end
 
     def self.add_entry(

@@ -25,10 +25,9 @@ command :list do |c|
   c.flag :n
 
   c.action do |global_options,options,args|
-
-    Doro::Entries::display_entries(doro_file: doro_file, num_entries: options[:n])
-
+    Doro::Entries::display_entries(doro_file: doro_file, num_entries: options[:n].to_i)
   end
+  
 end
 
 desc 'Begins a pomodoro timer'
