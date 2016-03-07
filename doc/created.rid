@@ -1,5 +1,19 @@
-Wed, 02 Mar 2016 11:57:10 -0500
-lib/doro/entries.rb	Wed, 02 Mar 2016 11:33:35 -0500
-lib/doro/progressbar.rb	Wed, 02 Mar 2016 11:56:17 -0500
-lib/doro/version.rb	Tue, 01 Mar 2016 10:34:03 -0500
-lib/doro.rb	Mon, 29 Feb 2016 09:08:28 -0500
+Thu, 03 Mar 2016 10:16:19 -0500
+./bin/doro	Thu, 03 Mar 2016 09:48:37 -0500
+./bin/logo.jpg	Tue, 23 Feb 2016 15:50:44 -0500
+./doro.gemspec	Wed, 02 Mar 2016 11:33:17 -0500
+./doro.rdoc	Wed, 02 Mar 2016 11:55:12 -0500
+./features/doro.feature	Wed, 24 Feb 2016 15:46:56 -0500
+./features/step_definitions/doro_steps.rb	Tue, 23 Feb 2016 19:38:15 -0500
+./features/support/env.rb	Tue, 23 Feb 2016 14:07:32 -0500
+./Gemfile	Tue, 23 Feb 2016 16:08:30 -0500
+./Gemfile.lock	Wed, 02 Mar 2016 11:33:38 -0500
+./lib/doro/entries.rb	Wed, 02 Mar 2016 11:57:49 -0500
+./lib/doro/progressbar.rb	Thu, 03 Mar 2016 08:32:35 -0500
+./lib/doro/version.rb	Tue, 01 Mar 2016 10:34:03 -0500
+./lib/doro.rb	Mon, 29 Feb 2016 09:08:28 -0500
+./Rakefile	Tue, 23 Feb 2016 16:09:39 -0500
+./README.md	Wed, 02 Mar 2016 11:36:43 -0500
+./results.html	Wed, 02 Mar 2016 11:53:26 -0500
+./test/default_test.rb	Tue, 23 Feb 2016 14:07:32 -0500
+./test/test_helper.rb	Tue, 23 Feb 2016 14:07:32 -0500

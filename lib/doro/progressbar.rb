@@ -4,12 +4,9 @@ require 'notifier'
 
 ##
 # This class handles the incrementing and display of the progress bar.
-
 class ProgressBar
-
   ##
   # Title can be any string, max_progress is in seconds.
-
   def initialize(title, max_progress)
     @progress = 0
     @max_progress = max_progress
@@ -25,7 +22,6 @@ class ProgressBar
   #   ProgressBar.new("Example", 60).start do |t|
   #     p 'this fires every second'
   #   end
-
   def start
     Signal.trap("INT") { @interrupt = true }
 
@@ -45,10 +41,10 @@ class ProgressBar
 
   def render_progress
     print @title
-    print " ["
-    print "=" * progress_bar_ticks
-    print " " * remaining_bar_ticks rescue 0
-    print "] "
+    print ' ['
+    print '=' * progress_bar_ticks
+    print ' ' * remaining_bar_ticks rescue 0
+    print '] '
     print "\e[32m#{display_time}\e[0m"
     print "\r"
   end
@@ -80,7 +76,7 @@ class ProgressBar
     return 80 unless unix?
 
     result = dynamic_width
-    result < 20? 80 : result
+    result < 20 ? 80 : result
 
   rescue
     80
@@ -103,3 +99,4 @@ class ProgressBar
   end
 
 end
+

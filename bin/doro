@@ -27,7 +27,7 @@ command :list do |c|
   c.action do |global_options,options,args|
     Doro::Entries::display_entries(doro_file: doro_file, num_entries: options[:n].to_i)
   end
-  
+
 end
 
 desc 'Begins a pomodoro timer'
@@ -75,7 +75,9 @@ command :break do |c|
     minutes = options[:t]
     options[:long]? minutes = 15 : nil
 
-    ProgressBar.new('Break', minutes * 60).start
+    ProgressBar.new('Break', minutes * 60).start do
+
+    end
 
   end
 end
