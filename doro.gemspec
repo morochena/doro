@@ -14,7 +14,7 @@ spec = Gem::Specification.new do |s|
   s.rdoc_options << '--title' << 'doro' << '--main' << 'README.rdoc' << '-ri'
   s.bindir = 'bin'
   s.executables << 'doro'
-  s.add_development_dependency('rake', '~> 10.5')
+  s.add_development_dependency('rake', '~> 13.0')
   s.add_development_dependency('rdoc', '~> 4.2')
   s.add_development_dependency('aruba', '~> 0.13')
 
