@@ -15,7 +15,7 @@ spec = Gem::Specification.new do |s|
   s.bindir = 'bin'
   s.executables << 'doro'
   s.add_development_dependency('rake', '~> 13.0')
-  s.add_development_dependency('rdoc', '~> 4.2')
+  s.add_development_dependency('rdoc', '~> 6.4')
   s.add_development_dependency('aruba', '~> 0.13')
 
   s.add_dependency('notifier', '~> 0.5')
